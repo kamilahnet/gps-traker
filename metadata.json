@@ -1,0 +1,6 @@
+{
+  "name": "GPS Checker",
+  "description": "Aplikasi pemantau status GPS real-time, akurasi, koordinat, kecepatan, kompas, satelit, dan riwayat lokasi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
