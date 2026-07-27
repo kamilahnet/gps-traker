@@ -3,9 +3,9 @@ name: Build Android APK
 # Pemicu: Jalankan build setiap kali ada push atau pull request di branch 'main'
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "gps-traker" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "gps-traker" ]
 
 jobs:
   build:
