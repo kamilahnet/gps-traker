@@ -1,6 +1,6 @@
 name: Build Android APK
 
-# Pemicu: Jalankan build setiap kali ada push atau pull request di branch 'main'
+# Pemicu: Jalankan build setiap kali ada push atau pull request di branch 'gps-traker'
 on:
   push:
     branches: [ "gps-traker" ]
@@ -16,7 +16,11 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v4
 
-    # 2. Siapkan lingkungan Java (Android Studio membutuhkan Java)
+    # 2. Siapkan Android SDK
+    - name: Set up Android SDK
+      uses: android-actions/setup-android@v3
+
+    # 3. Siapkan lingkungan Java (Android Studio membutuhkan Java)
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
@@ -24,18 +28,17 @@ jobs:
         java-version: '17'
         cache: 'gradle'
 
-    # 3. Berikan izin akses pada Gradle Wrapper agar bisa dieksekusi
+    # 4. Berikan izin akses pada Gradle Wrapper agar bisa dieksekusi
     - name: Grant execute permission for gradlew
       run: chmod +x ./gradlew
 
-    # 4. Proses kompilasi / build menjadi APK Debug
+    # 5. Proses kompilasi / build menjadi APK Debug
     - name: Build with Gradle
       run: ./gradlew assembleDebug
 
-    # 5. Upload hasil APK agar bisa di-download oleh Anda
+    # 6. Upload hasil APK agar bisa di-download oleh Anda
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
       with:
         name: app-debug-apk
         path: app/build/outputs/apk/debug/app-debug.apk
-
